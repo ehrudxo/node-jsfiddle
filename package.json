@@ -11,9 +11,11 @@
     "url": "git+ssh://git@bitbucket.org/IonicaBizau/node-jsfiddle.git"
   },
   "dependencies": {
-    "request": "*",
     "cheerio": "*",
-    "html-encoder-decoder": "*"
+    "express": "^4.14.0",
+    "html-encoder-decoder": "*",
+    "monaco-editor": "^0.5.1",
+    "request": "*"
   },
   "keywords": [
     "jsfiddle",

@@ -2,7 +2,7 @@
 var JSFiddleApi = require ("../index");
 
 // get this fiddle
-JSFiddleApi.getFiddle ("u8B29", function (err, fiddleObj) {
+JSFiddleApi.getFiddle ("ehrudxo/kwvrxpz0/", function (err, fiddleObj) {
 
     // handle error
     if (err) { return console.log (err); }
