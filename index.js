@@ -43,7 +43,8 @@ var JSFiddleApi = {
         if (options.constructor === String) {
 
             // build the url
-            var url = JSFIDDLE_URL + options;
+            //added for proxy settings
+            url=(process.env.HTTP_PROXY||process.env.HTTPS_PROXY)?{proxy:process.env.HTTP_PROXY||process.env.HTTPS_PROXY,url:JSFIDDLE_URL + options}:JSFIDDLE_URL + options;
 
             // run the request
             Request.get(url, function (err, response, body) {
@@ -62,16 +63,17 @@ var JSFiddleApi = {
                 }
 
                 // override body response decoding it
-                body = HtmlEncoderDecoder.decode (body);
 
+                // body = HtmlEncoderDecoder.decode (body);
                 // parse HTML
                 var $ = Cheerio.load(body);
-
+                //console.log(HtmlEncoderDecoder.decode ($("#id_code_js").html()));
                 // finally return an object containing `html`, `js` and `css` fields
+
                 callback (null, {
-                    html: $("#id_code_html").html()
-                  , js:   $("#id_code_js").html()
-                  , css:  $("#id_code_css").html()
+                    html: HtmlEncoderDecoder.decode ($("#id_code_html").html())
+                  , js:   HtmlEncoderDecoder.decode ($("#id_code_js").html())
+                  , css:  HtmlEncoderDecoder.decode ($("#id_code_css").html())
                 });
             });
         }

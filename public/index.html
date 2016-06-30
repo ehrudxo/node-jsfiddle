@@ -3,24 +3,32 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <link rel="stylesheet" type="text/css" href="tab.css">
 </head>
 <body>
+<div class="wrapbody">
+  <div id="head_container">
+    <ul class="tabs">
+           <li class="active" rel="js">js</li>
+           <li rel="html">html</li>
+           <li rel="css">css</li>
+           <li rel="results">results</li>
+           <div class="url_input">https://jsfiddle.net/<input id="fiddleurl"></input></div>
+    </ul>
+  </div>
+  <div class="footer">
+    jsfiddle editor
+  </div>
+  <div class="wrap_container">
+    <div id="tab_container" class="editor_palette">
+      <div id="tab_content" class="tab_content"/>
+    </div>
+  </div>
 
-<div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
+</div>
 
-<script src="./monaco-editor/loader.js"></script>
-<script>
-    require.config({ paths: { 'vs': 'monaco-editor/min/vs' }});
-    require(['vs/editor/editor.main'], function() {
-        var editor = monaco.editor.create(document.getElementById('container'), {
-            value: [
-                'function x() {',
-                '\tconsole.log("Hello world!");',
-                '}'
-            ].join('\n'),
-            language: 'javascript'
-        });
-    });
-</script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="./monaco-editor/min/vs/loader.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
